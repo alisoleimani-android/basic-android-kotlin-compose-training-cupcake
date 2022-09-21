@@ -18,11 +18,7 @@ package com.example.cupcake
 import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
@@ -36,7 +32,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.data.DataSource.flavors
 import com.example.cupcake.data.DataSource.quantityOptions
 import com.example.cupcake.ui.OrderSummaryScreen
@@ -78,8 +73,11 @@ fun CupcakeAppBar(
 }
 
 @Composable
-fun CupcakeApp(modifier: Modifier = Modifier, viewModel: OrderViewModel = viewModel()) {
-    val navController = rememberNavController()
+fun CupcakeApp(
+    modifier: Modifier = Modifier,
+    navController: NavHostController,
+    viewModel: OrderViewModel = viewModel()
+) {
 
     val backStackEntry by navController.currentBackStackEntryAsState()
 
