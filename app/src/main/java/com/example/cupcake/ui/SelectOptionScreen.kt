@@ -49,16 +49,16 @@ import com.example.cupcake.ui.components.FormattedPriceLabel
 fun SelectOptionScreen(
     subtotal: String,
     options: List<String>,
-    onSelectionChanged: (String) -> Unit = {},
-    // TODO: add onCancelButtonClicked
-    // TODO: add onNextButtonClicked
+    onSelectionChanged: (String) -> Unit,
+    onCancelButtonClicked: () -> Unit,
+    onNextButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
-){
+) {
     var selectedValue by rememberSaveable { mutableStateOf("") }
 
-    Column (modifier = modifier.padding(16.dp)){
+    Column(modifier = modifier.padding(16.dp)) {
         options.forEach { item ->
-            Row (
+            Row(
                 modifier = Modifier.selectable(
                     selected = selectedValue == item,
                     onClick = {
@@ -67,7 +67,7 @@ fun SelectOptionScreen(
                     }
                 ),
                 verticalAlignment = Alignment.CenterVertically
-            ){
+            ) {
                 RadioButton(
                     selected = selectedValue == item,
                     onClick = {
@@ -78,25 +78,28 @@ fun SelectOptionScreen(
                 Text(item)
             }
         }
-        Divider(thickness = 1.dp, modifier = modifier.padding(bottom = 16.dp))
+        Divider(thickness = 1.dp, modifier = Modifier.padding(bottom = 16.dp))
         FormattedPriceLabel(
             subtotal = subtotal,
             modifier = Modifier
                 .align(Alignment.End)
                 .padding(top = 16.dp, bottom = 16.dp)
         )
-        Row (
+        Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ){
-            OutlinedButton(modifier = Modifier.weight(1f), onClick = { /* TODO: handle cancel button */ }) {
+        ) {
+            OutlinedButton(
+                modifier = Modifier.weight(1f),
+                onClick = onCancelButtonClicked
+            ) {
                 Text(stringResource(R.string.cancel))
             }
             Button(
                 modifier = Modifier.weight(1f),
                 // the button is enabled when the user makes a selection
                 enabled = selectedValue.isNotEmpty(),
-                onClick = { /* TODO: handle next button */ }
+                onClick = onNextButtonClicked
             ) {
                 Text(stringResource(R.string.next))
             }
@@ -106,9 +109,12 @@ fun SelectOptionScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun SelectOptionPreview(){
+fun SelectOptionPreview() {
     SelectOptionScreen(
         subtotal = "299.99",
-        options = listOf("Option 1", "Option 2", "Option 3", "Option 4")
+        options = listOf("Option 1", "Option 2", "Option 3", "Option 4"),
+        onCancelButtonClicked = {},
+        onNextButtonClicked = {},
+        onSelectionChanged = {}
     )
 }
