@@ -1,4 +1,4 @@
-package com.example.cupcake.test
+package com.example.cupcake
 
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.platform.LocalContext
@@ -8,9 +8,6 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
-import com.example.cupcake.CupcakeApp
-import com.example.cupcake.CupcakeScreen
-import com.example.cupcake.R
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

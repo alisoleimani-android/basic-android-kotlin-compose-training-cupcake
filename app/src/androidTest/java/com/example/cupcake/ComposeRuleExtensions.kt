@@ -1,4 +1,4 @@
-package com.example.cupcake.test
+package com.example.cupcake
 
 import androidx.activity.ComponentActivity
 import androidx.annotation.StringRes

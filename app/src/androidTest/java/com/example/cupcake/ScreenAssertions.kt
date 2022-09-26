@@ -1,4 +1,4 @@
-package com.example.cupcake.test
+package com.example.cupcake
 
 import androidx.navigation.NavController
 import org.junit.Assert.assertEquals
